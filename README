@@ -1,3 +1,4 @@
 This project contains the following directories
 
 lex --> this has experiments done on lex tool
+lex/removeblank.l -> to remove all blanks from the input
