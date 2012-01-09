@@ -1,4 +1,3 @@
-%option main
 %{
   /* Definitions of manifest constants */
 #define LT (256)
