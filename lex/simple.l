@@ -12,6 +12,10 @@
 #define ID (248) 
 #define NUMBER (247) 
 #define RELOP (246) 
+#define GE (245)
+int RelopVal;
+#include <stdio.h>
+
 %}
 
 /* Regular definitions */
@@ -26,3 +30,25 @@ exponent  (E[+\-]?{digit}+)?
 number    {digit}+{fraction}{exponent}
 
 %%
+
+{ws}      {/*no action no return*/}
+if        {return IF;}
+then      {return THEN;}
+else      {return ELSE;}
+{id}      {install_id(); return ID;}
+{number}  {install_num(); return NUMBER;}
+“<“       {RelopVal = LT; return RELOP;}
+“<=“      {RelopVal = LE; return RELOP;}
+“=“       {RelopVal = EQ; return RELOP;}
+“<>“      {RelopVal = NE; return RELOP;}
+“>“       {RelopVal = GT; return RELOP;}
+“>=“      {RelopVal = GE; return RELOP;}
+%%
+
+install_id() {
+  printf("Installing id into symbol table\n");
+}
+
+install_num() {
+  printf("Installing number into symbol table\n");
+}
